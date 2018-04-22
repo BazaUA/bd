@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <style type="text/css">
+        body{padding-top:30px;}
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/admin/">Головна</a></li>
+            <li><a href="/admin/pupils/">Учні</a></li>
+            <li><a href="/admin/personnel/">Вчителі</a></li>
+            <li><a href="/admin/classes/">Класи</a></li>
+            <li><a href="/admin/subjects/">Придмети</a></li>
+            <li><a href="/admin/rooms/">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!------ Include the above in your HEAD tag ---------->
+<form action="/admin/class/add" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Редагувати данні</legend>
+
+        <!-- Text input-->
+        <div style="display: none" class="form-group">
+            <label class="col-md-4 control-label" for="id">Id</label>
+            <div class="col-md-4">
+                <input id="id" name="id" type="number"  class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Клас</label>
+            <div class="col-md-4">
+                <input  id="name" name="name" type="text" placeholder="Назва класу" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="change">Зміна</label>
+            <div class="col-md-4">
+                <input  id="change" name="change" type="number" placeholder="Зміна" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="profile">Профіль</label>
+            <div class="col-md-4">
+                <input id="profile" name="profile" type="text" placeholder="Профіль" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="limitNumber">Кількісь місць</label>
+            <div class="col-md-4">
+                <input  id="limitNumber" name="limitNumber" type="number" placeholder="Кількість місць" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="description">Опис</label>
+            <div class="col-md-4">
+                <input  id="description" name="description" type="text" placeholder="Опис" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="roomId">Оберіть галузь знань: </label>
+            <div class="col-md-4">
+                <select class="form-control input-md" name="roomId" class="form-control" id="roomId">
+                    {{#q}}
+                    <option>{{id}} - {{name}}</option>
+                    {{/q}}
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="paralelId">Оберіть галузь знань: </label>
+            <div class="col-md-4">
+                <select class="form-control input-md" name="paralelId" class="form-control" id="paralelId">
+                    {{#parallel}}
+                    <option>{{id}} - {{name}}</option>
+                    {{/parallel}}
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id">Double Button</label>
+            <div class="col-md-8">
+                <button type="submit" id="button1id" name="button1id" class="btn btn-success">Додати</button>
+                <a href="/admin/subjects"><button type="button" id="button2id" name="button2id" class="btn btn-danger"><Відмінити></Відмінити></button></a>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+</body>
+</html>

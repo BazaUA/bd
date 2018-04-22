@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My info</title>
+    <style type="text/css">
+        body{padding-top:30px;}
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<!------ Include the above in your HEAD tag ---------->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Учень</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/pupil/">Головна</a></li>
+            <li><a href="/pupil/subjects/my">Мої придмети</a></li>
+            <li><a href="/pupil/subjects/all">Усі придмети</a></li>
+            <li><a href="/pupil/class">Клас</a></li>
+        </ul>
+    </div>
+</nav>
+<h1>Мої данні</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img src="https://stroops.com/wp-content/uploads/2016/11/placeholder-profile-male-500x500.png" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{p.surname}} {{p.name}} {{p.midlename}}</h4>
+                        <small><cite title={{p.sex}}>Стать: {{p.sex}} </cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{#p.medal}}
+                            Притендент на медаль
+                            {{/p.medal}}
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>{{class}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

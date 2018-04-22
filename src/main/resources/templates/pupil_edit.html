@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <style type="text/css">
+        body{padding-top:30px;}
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/admin/">Головна</a></li>
+            <li><a href="/admin/pupils/">Учні</a></li>
+            <li><a href="/admin/personnel/">Вчителі</a></li>
+            <li><a href="/admin/classes/">Класи</a></li>
+            <li><a href="/admin/subjects/">Придмети</a></li>
+            <li><a href="/admin/rooms/">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+<!------ Include the above in your HEAD tag ---------->
+<form action="/admin/pupil/edit" method="post" class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Редагувати данні</legend>
+
+        <!-- Text input-->
+        <div style="display: none" class="form-group">
+            <label class="col-md-4 control-label" for="id">Id</label>
+            <div class="col-md-4">
+                <input id="id" name="id" type="number" value={{p.id}} class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="surname">Прізвище</label>
+            <div class="col-md-4">
+                <input value={{p.surname}} id="surname" name="surname" type="text" placeholder="Прізвище" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="name">Ім'я</label>
+            <div class="col-md-4">
+                <input value={{p.name}} id="name" name="name" type="text" placeholder="Ім'я" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="midlename">По-батькові</label>
+            <div class="col-md-4">
+                <input value={{p.midlename}} id="midlename" name="midlename" type="text" placeholder="По-батькові" class="form-control input-md">
+
+            </div>
+        </div>
+
+
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="sex">Стать</label>
+            <div class="col-md-4">
+                <input value={{p.sex}} id="sex" name="sex" type="text" placeholder="Стать" class="form-control input-md">
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="СlassRoom_id_classes">Оберіть клас: </label>
+            <div class="col-md-4">
+                <select class="form-control input-md" name="СlassRoom_id_classes" class="form-control" id="СlassRoom_id_classes">
+                    {{#q}}
+                    <option>{{id}} - {{name}}</option>
+                    {{/q}}
+                </select>
+            </div>
+        </div>
+
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id">Double Button</label>
+            <div class="col-md-8">
+                <button type="submit" id="button1id" name="button1id" class="btn btn-success">Edit</button>
+                <a href="/admin/pupils"><button type="button" id="button2id" name="button2id" class="btn btn-danger">Cancel</button></a>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+</body>
+</html>

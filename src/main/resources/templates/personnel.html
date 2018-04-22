@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Personnel</title>
+    <style type="text/css">
+        body{padding-top:30px;}
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/admin/">Головна</a></li>
+            <li><a href="/admin/pupils/">Учні</a></li>
+            <li><a href="/admin/personnel/">Вчителі</a></li>
+            <li><a href="/admin/classes/">Класи</a></li>
+            <li><a href="/admin/subjects/">Придмети</a></li>
+            <li><a href="/admin/rooms/">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+<!------ Include the above in your HEAD tag ---------->
+<h1>Данні вчителів</h1>
+<a href="/admin/personnel/add"><button class="btn btn-success" type="button">Додати</button></a>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+
+                    {{#list}}
+                    <div class="col-sm-6 col-md-4">
+                        <img src="https://stroops.com/wp-content/uploads/2016/11/placeholder-profile-male-500x500.png" alt="" class="img-rounded img-responsive" />
+                    </div>
+                    <div class="col-sm-6 col-md-8">
+                        <h4>
+                            {{surname}} {{name}} {{midlename}}</h4>
+                        <small><cite title={{sex}}>Стать: {{sex}} </cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>Посада: {{workPosition}}
+                            <br />
+                            <i class="glyphicon glyphicon-gift"></i>Дата останньої атестації: {{date_laste_att}}</p>
+                        <h6>Тарифний розряд: {{tariff_rate}}</h6>
+                        <h6>Звання: {{rank}}</h6>
+                        <h6>Дата прийому на роботу: {{date_employment}}</h6>
+                        <h6>Освіт: {{education}}</h6>
+                        <h6>Кваліфікація: {{qualification}}</h6>
+                        <button type="button" onclick="deleteFunction(this.id)" id="{{id}}" name="delete" class="btn btn-danger">Звільнити</button>
+                        <button onclick="editFunction(this.id)" id="{{id}}" name="edit" class="btn btn-success">Редагувати</button>
+                    </div>
+                    {{/list}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var deleteFunction = function(clicked_id) {
+        $.ajax({
+            type: 'DELETE',
+            url: "/admin/personnel/" + clicked_id,
+            dataType: 'json',
+            async: true,
+            success: function(result) {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status + ' ' + jqXHR.responseText);
+            }
+        });
+    }
+
+    var editFunction = function(clicked_id) {
+        window.location.replace("/admin/personnel/edit/"+clicked_id);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pages</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Вчитель</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="/personnel/">Головна</a></li>
+            <li class="active"><a href="/personnel/pages">Сторінки</a></li>
+            <li><a href="/personnel/classes/all">Класи</a></li>
+            <li><a href="/personnel/subjects/my">Придмети</a></li>
+            <li ><a href="/personnel/rooms">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container text-center">
+
+    <h2>Сторінки журналу</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>Номер сторінки</th>
+            <th>Тип сторінки</th>
+            <th>Підгрупа</th>
+            <th>Придмет</th>
+            <th>Клас</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        {{#list}}
+        <tr >
+            <td id={{numberPagesJournal}} class="numberPagesJournal">{{numberPagesJournal}}</td>
+            <td>{{pageType}}</td>
+            <td>{{subgroup_num}}</td>
+            <td style="display: none">{{description}}</td>
+            <td id={{subjectsIdSubject}} class="subject">{{subject}}</td>
+            <td id={{personnelIdEmployee}} class="personnelIdEmployee" style="display: none;">{{personnelIdEmployee}}</td>
+            <td id={{classesIdClasses}} class="classesIdClasses">{{classRoom}}</td>
+
+
+            <td>
+                <button id={{numberPagesJournal}}/{{subjectsIdSubject}}/{{personnelIdEmployee}}/{{classesIdClasses}} type='button' class="btn btn-primary"
+                        onclick='RestDelete(this.id)'>Видалити</button>
+            </td>
+
+            <td>
+                <button id={{description}} type='button' class="btn btn-primary"
+                        onclick='Read(this.id)'>Читати опис</button>
+            </td>
+        </tr>
+        {{/list}}
+
+            <a href="/personnel/pages/add"> <button type='button' class="btn btn-primary"
+            >Додати</button></a>
+
+    </table>
+</div>
+<script type="text/javascript">
+    var prefix = '/personnel';
+    var RestPut = function() {
+        var JSONObject= {
+            'numberPagesJournal': 3,
+            'pageType': 'Титульна',
+            'subgroup_num' : 1,
+            'description' : 'sdfsdf',
+            'subjectsIdSubject' : 1,
+            'subject' : '',
+            'personnelIdEmployee' : 1,
+            'classesIdClasses' : 1,
+            'classRoom' : ''
+        };
+        $.ajax({
+            type: 'PUT',
+            url:  prefix + '/pages' ,
+            contentType: 'application/json; charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: true,
+            success: function(result) {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status + ' ' + jqXHR.responseText);
+            }
+        });
+    }
+    var RestPost = function(clicked_id) {
+
+        $.ajax({
+            type: 'POST',
+            url:  prefix + '/MyData',
+            dataType: 'json',
+            async: true,
+            success: function(result) {
+                alert('At ' + result.time
+                    + ': ' + result.message);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status + ' ' + jqXHR.responseText);
+            }
+        });
+    }
+    var RestDelete = function(clicked_id) {
+
+        $.ajax({
+            type: 'DELETE',
+            url:  prefix + "/pages/" + clicked_id,
+            dataType: 'json',
+            async: true,
+            success: function(result) {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert(jqXHR.status + ' ' + jqXHR.responseText);
+            }
+        });
+    }
+    var Read = function(clicked_id) {
+        alert(clicked_id);
+    }
+</script>
+</body>
+</html>

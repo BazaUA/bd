@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My info</title>
+    <style type="text/css">
+        body{padding-top:30px;}
+
+        .glyphicon {  margin-bottom: 10px;margin-right: 10px;}
+
+        small {
+            display: block;
+            line-height: 1.428571429;
+            color: #999;
+        }
+    </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Учитель</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="/personnel/">Головна</a></li>
+            <li ><a href="/personnel/pages">Сторінки</a></li>
+            <li><a href="/personnel/classes/all">Класи</a></li>
+            <li><a href="/personnel/subjects/my">Придмети</a></li>
+            <li ><a href="/personnel/rooms">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+<!------ Include the above in your HEAD tag ---------->
+<br><br>
+<div class="container-fluid well span6">
+    <div class="row-fluid">
+
+        {{#list}}
+        <div class="span8">
+            <h3>Данні {{name}} класу</h3>
+            <h6>Клас: {{name}}</h6>
+            <h6>Зміна: {{change}}</h6>
+            <h6>Профіль: {{profile}}</h6>
+            <h6>Кількість місць: {{limitNumber}}</h6>
+            <h6>Кількість учнів: {{count}}</h6>
+            <h6>Опис: {{description}}</h6>
+            <h6>Назва кімнати: {{room}}</h6>
+            <h6>Паралель: {{paralel}}</h6>
+        </div>
+        {{/list}}
+
+    </div>
+</div>
+
+</body>
+</html>

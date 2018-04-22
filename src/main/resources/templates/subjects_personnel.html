@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subjects</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Admin</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li ><a href="/personnel/">Головна</a></li>
+            <li ><a href="/personnel/pages">Сторінки</a></li>
+            <li><a href="/personnel/classes/all">Класи</a></li>
+            <li><a href="/personnel/subjects/my">Придмети</a></li>
+            <li ><a href="/personnel/rooms">Приміщення</a></li>
+            <li><a href="/login">Увійти</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container text-center">
+
+    <h2>{{sub}}</h2>
+
+
+    <table class="table">
+        <tr>
+
+            <th>Ім'я дисципліни</th>
+            <th>Підгрупа</th>
+            <th>Обов'язкова</th>
+            <th>Галузь науки</th>
+        </tr>
+
+        {{#list}}
+        <tr id={{id}}>
+            <td>{{name}}</td>
+            <td>{{subgroup}}</td>
+            <td>{{#value}}
+                Обов'язковий придмет
+                {{/value}}
+                {{^value}}
+                Необов'язковий придмет
+                {{/value}}</td>
+            <td>{{nameOfBranch}}</td>
+        </tr>
+        {{/list}}
+
+    </table>
+</div>
+</body>
+</html>
